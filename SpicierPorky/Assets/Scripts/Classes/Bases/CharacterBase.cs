@@ -2,7 +2,7 @@
 {
 	using UnityEngine;
 
-	public class CharacterBase : MonoBehaviour, IResetable, ISuspendable
+	public class CharacterBase : Entity, IResetable, ISuspendable
 	{
 		public virtual string resetKey		=> "Game";
 		public virtual string suspensionKey	=> "Game";
