@@ -6,8 +6,10 @@
 	{
 		public event System.Action<Transform> onTargetChanged = delegate { };
 
+		[HideInInspector] public Camera cam;
 		[HideInInspector] public CameraLogic logic;
 		[HideInInspector] public CameraStates states = new CameraStates();
+		[HideInInspector] public CharacterBase targetCharacter;
 
 		[SerializeField] protected string targetStartTag = "Player";
 
@@ -20,6 +22,10 @@
 					return;
 
 				_target = value;
+
+				if (_target)
+					targetCharacter = _target.GetComponent<CharacterBase>();
+
 				onTargetChanged(_target);
 			}
 		}
@@ -32,6 +38,7 @@
 
 		protected override void Awake()
 		{
+			cam = GetComponentInChildren<Camera>();
 			target = GameObject.FindGameObjectWithTag(targetStartTag)?.transform;
 
 			base.Awake();

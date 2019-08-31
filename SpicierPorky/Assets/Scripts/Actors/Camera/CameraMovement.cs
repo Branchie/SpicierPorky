@@ -6,6 +6,9 @@
 	{
 		[HideInInspector] public Vector2 newPosition;
 
+		public float velocityMagnitude { get; private set; }
+		public Vector2 velocity { get; private set; }
+
 		public override void SetReferenceToCharacter(CameraController parent)
 		{
 			base.SetReferenceToCharacter(parent);
@@ -16,6 +19,9 @@
 
 		protected override void UpdateState()
 		{
+			velocity = (newPosition - parent.position) / Time.deltaTime;
+			velocityMagnitude = velocity.magnitude;
+
 			parent.position = newPosition;
 		}
 	}

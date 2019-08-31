@@ -4,5 +4,6 @@
 	{
 		public CameraFollow follow;
 		public CameraMovement movement;
+		public CameraZoom zoom;
 	}
 }

@@ -9,6 +9,7 @@
 
 		public bool allowFollow => hasTarget;
 		public bool allowMovement => true;
+		public bool allowZoom => true;
 
 		public bool hasTarget => parent.target;
 
@@ -27,8 +28,11 @@
 
 			CharacterStateBase.SetActive(states.follow, allowFollow);
 			CharacterStateBase.SetActive(states.movement, allowMovement);
+			CharacterStateBase.SetActive(states.zoom, allowZoom);
 
 			CharacterStateBase.UpdateState(states.follow);
+			CharacterStateBase.UpdateState(states.zoom);
+
 			CharacterStateBase.UpdateState(states.movement);
 		}
 	}

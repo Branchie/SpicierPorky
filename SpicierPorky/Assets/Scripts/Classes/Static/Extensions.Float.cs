@@ -4,6 +4,11 @@
 
 	public static partial class Extensions
 	{
+		public static bool Approximately(this float a, float b, float fudge)
+		{
+			return Mathf.Abs(a - b) < fudge;
+		}
+
 		public static float Ceil(this float f, float precision)
 		{
 			return Mathf.Ceil(f / precision) * precision;
