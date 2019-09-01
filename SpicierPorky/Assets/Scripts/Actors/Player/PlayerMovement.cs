@@ -4,11 +4,13 @@
 
 	public class PlayerMovement : CharacterState<PlayerController>
 	{
+		public float maxFallSpeed = 30;
+
 		[HideInInspector] public CC2D character;
 
 		[HideInInspector] public Vector2 velocity;
 
-		[SerializeField] private float maxFallSpeed = 30;
+		private float _maxFallSpeed;
 
 		public override void SetReferenceToCharacter(PlayerController parent)
 		{
@@ -16,6 +18,8 @@
 			parent.states.movement = this;
 
 			character = GetComponent<CC2D>();
+
+			_maxFallSpeed = maxFallSpeed;
 		}
 
 		protected override void UpdateState()
@@ -27,10 +31,13 @@
 
 			if (character.collisionState.down && character.collisionState.wall)
 				parent.states.motor.direction = -parent.states.motor.direction;
+
+			maxFallSpeed = _maxFallSpeed;
 		}
 
 		protected override void ResetState()
 		{
+			character.collisionState.Reset();
 			velocity = Vector2.zero;
 		}
 	}

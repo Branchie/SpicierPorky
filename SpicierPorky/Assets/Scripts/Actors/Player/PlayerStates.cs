@@ -8,5 +8,6 @@
 		public PlayerMotor motor;
 		public PlayerMovement movement;
 		public PlayerWallJump wallJump;
+		public PlayerWallSlide wallSlide;
 	}
 }

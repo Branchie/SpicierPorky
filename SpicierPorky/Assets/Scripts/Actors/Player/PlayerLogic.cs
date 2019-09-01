@@ -14,9 +14,11 @@
 		public bool allowMotor => true;
 		public bool allowMovement => true;
 		public bool allowWallJump => hasWall;
+		public bool allowWallSlide => hasWall;
 
-		public bool isGrounded => states.movement.character.collisionState.down;
 		public bool hasWall => states.movement.character.collisionState.left || states.movement.character.collisionState.right;
+		public bool isGrounded => states.movement.character.collisionState.down;
+		public bool isWallSlide => states.wallSlide.active;
 
 		public void SetReferenceToCharacter(PlayerController parent)
 		{
@@ -35,6 +37,7 @@
 			CharacterStateBase.SetActive(states.input, allowInput);
 			CharacterStateBase.SetActive(states.motor, allowMotor);
 			CharacterStateBase.SetActive(states.movement, allowMovement);
+			CharacterStateBase.SetActive(states.wallSlide, allowWallSlide);
 
 			CharacterStateBase.UpdateState(states.gravity);
 			CharacterStateBase.UpdateState(states.input);
@@ -42,6 +45,7 @@
 			CharacterStateBase.UpdateState(states.jump);
 			CharacterStateBase.UpdateState(states.wallJump);
 
+			CharacterStateBase.UpdateState(states.wallSlide);
 			CharacterStateBase.UpdateState(states.motor);
 
 			CharacterStateBase.UpdateState(states.movement);
