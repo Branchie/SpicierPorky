@@ -4,6 +4,7 @@
 
 	public static class Inputs
 	{
+		[System.Serializable]
 		public class Player
 		{
 			public InputProcessor jump = new InputProcessor();

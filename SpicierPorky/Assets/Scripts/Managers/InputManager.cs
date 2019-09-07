@@ -1,20 +1,20 @@
 ﻿namespace Gypo.SpicierPorky
 {
+	using Gypo.Input;
 	using UnityEngine;
 
 	public class InputManager : MonoBehaviour
 	{
+		[SerializeField] private ControlScheme player = default;
+
 		protected virtual void Update()
 		{
-			Inputs.player.movement = new Vector2(
-				Input.GetAxisRaw("Horizontal"),
-				Input.GetAxisRaw("Vertical")
-			);
+			Inputs.player.movement = player.GetAxis2D("Horizontal", "Vertical");
 		}
 
 		protected virtual void FixedUpdate()
 		{
-			Inputs.player.jump.Update(Input.GetKey(KeyCode.L));
+			Inputs.player.jump.Update(player.GetButton("Jump"));
 		}
 	}
 }

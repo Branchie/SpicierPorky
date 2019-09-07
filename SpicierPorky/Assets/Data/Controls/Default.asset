@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09701d24ae3f87c44aef34f49800d856, type: 3}
+  m_Name: Default
+  m_EditorClassIdentifier: 
+  displayName: Default
+  axis:
+  - name: Horizontal
+    standalone:
+      keys:
+      - negative: 97
+        positive: 100
+      - negative: 276
+        positive: 275
+      raw: []
+  - name: Vertical
+    standalone:
+      keys:
+      - negative: 115
+        positive: 119
+      - negative: 274
+        positive: 273
+      raw: []
+  buttons:
+  - name: Jump
+    standalone:
+      keys: 6c0000007a000000
