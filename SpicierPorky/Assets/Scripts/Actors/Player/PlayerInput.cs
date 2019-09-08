@@ -18,6 +18,12 @@
 		{
 			movement = input.movement;
 
+			if (input.slide.onPressed)
+			{
+				if (parent.logic.allowSlide)
+					parent.states.slide.Activate();
+			}
+
 			if (input.jump.onPressed)
 			{
 				if (parent.logic.allowJump)

@@ -12,6 +12,9 @@
 		{
 			base.SetReferenceToCharacter(parent);
 			parent.states.follow = this;
+
+			if (parent.target)
+				parent.position = parent.targetPosition;
 		}
 
 		protected override void UpdateState()
@@ -24,6 +27,11 @@
 				float.MaxValue,
 				Time.deltaTime
 			);
+		}
+
+		protected override void ResetState()
+		{
+			dampVel = Vector2.zero;
 		}
 	}
 }

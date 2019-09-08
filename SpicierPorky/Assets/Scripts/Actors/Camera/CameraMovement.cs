@@ -24,5 +24,10 @@
 
 			parent.position = newPosition;
 		}
+
+		protected override void ResetState()
+		{
+			newPosition = parent.position;
+		}
 	}
 }

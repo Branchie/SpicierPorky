@@ -8,6 +8,7 @@
 		public class Player
 		{
 			public InputProcessor jump = new InputProcessor();
+			public InputProcessor slide = new InputProcessor();
 
 			public Vector2 movement;
 		}

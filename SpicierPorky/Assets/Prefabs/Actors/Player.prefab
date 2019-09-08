@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8495531207716895518}
   - component: {fileID: 8495531207716895513}
+  - component: {fileID: 6214792651654487406}
   m_Layer: 8
   m_Name: Graphic
   m_TagString: Untagged
@@ -81,6 +82,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6214792651654487406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8495531207716895519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a371e0a83a45eb5479779e8e03fd4076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  sprRen: {fileID: 0}
 --- !u!1 &8495531208115435897
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,6 +257,7 @@ GameObject:
   - component: {fileID: 8495531208211949808}
   - component: {fileID: 8495531208211949810}
   - component: {fileID: 8495531208211949809}
+  - component: {fileID: 1234030156235166910}
   - component: {fileID: 8495531208211949709}
   - component: {fileID: 8495531208211949708}
   m_Layer: 8
@@ -316,10 +332,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed:
-    acceleration: 45
-    deceleration: 45
+    acceleration: 54
+    deceleration: 54
     maxSpeed: 15
   direction: 1
+--- !u!114 &1234030156235166910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8495531208211949815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4d0e002a121fcc47a3b6ef814cdff79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed:
+    acceleration: 54
+    deceleration: 54
+    maxSpeed: 25
+  duration: 0.6
+  landExtension: 0
 --- !u!114 &8495531208211949709
 MonoBehaviour:
   m_ObjectHideFlags: 0

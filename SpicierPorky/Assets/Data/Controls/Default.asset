@@ -34,3 +34,6 @@ MonoBehaviour:
   - name: Jump
     standalone:
       keys: 6c0000007a000000
+  - name: Slide
+    standalone:
+      keys: 7300000012010000

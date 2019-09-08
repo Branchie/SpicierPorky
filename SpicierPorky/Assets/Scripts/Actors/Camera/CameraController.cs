@@ -13,6 +13,8 @@
 
 		[SerializeField] protected string targetStartTag = "Player";
 
+		private Vector2 startPosition;
+
 		public Transform target
 		{
 			get => _target;
@@ -42,6 +44,15 @@
 			target = GameObject.FindGameObjectWithTag(targetStartTag)?.transform;
 
 			base.Awake();
+
+			startPosition = position;
+		}
+
+		public override void OnReset()
+		{
+			position = startPosition;
+
+			base.OnReset();
 		}
 	}
 }

@@ -36,5 +36,12 @@
 				Time.deltaTime
 			);
 		}
+
+		protected override void ResetState()
+		{
+			parent.cam.orthographicSize = defaultSize;
+
+			dampVel = 0;
+		}
 	}
 }

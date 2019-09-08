@@ -15,6 +15,7 @@
 		protected virtual void FixedUpdate()
 		{
 			Inputs.player.jump.Update(player.GetButton("Jump"));
+			Inputs.player.slide.Update(player.GetButton("Slide"));
 		}
 	}
 }
