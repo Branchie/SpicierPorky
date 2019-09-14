@@ -6,6 +6,7 @@
 		public PlayerGravity gravity;
 		public PlayerInput input;
 		public PlayerJump jump;
+		public PlayerKnockback knockback;
 		public PlayerMotor motor;
 		public PlayerMovement movement;
 		public PlayerSlide slide;

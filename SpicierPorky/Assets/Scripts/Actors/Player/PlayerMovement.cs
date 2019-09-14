@@ -29,8 +29,8 @@
 
 			velocity = character.Move(velocity * Time.deltaTime);
 
-			if (character.collisionState.down && character.collisionState.wall)
-				parent.states.motor.direction = -parent.states.motor.direction;
+			if (parent.logic.allowKnockback)
+				parent.states.knockback.Activate();
 
 			maxFallSpeed = _maxFallSpeed;
 		}

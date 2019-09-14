@@ -19,6 +19,11 @@
 			parent.states.slide = this;
 		}
 
+		public override void Init()
+		{
+			parent.states.knockback.onEnterEvent += Deactivate;
+		}
+
 		public override void Activate()
 		{
 			if (active)
