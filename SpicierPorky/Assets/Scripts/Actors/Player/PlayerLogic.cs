@@ -15,6 +15,7 @@
 		public bool allowMotor => true;
 		public bool allowMovement => true;
 		public bool allowSlide => isGrounded && (!isSliding || states.slide.canQueue);
+		public bool allowWallDash => isWallSlide && !isWallDash;
 		public bool allowWallJump => hasWall;
 		public bool allowWallSlide => hasWall;
 
@@ -22,6 +23,7 @@
 		public bool hasWallCollision => (direction > 0 && collisionState.right) || (direction < 0 && collisionState.left);
 		public bool isGrounded => states.movement.character.collisionState.down;
 		public bool isSliding => states.slide.active;
+		public bool isWallDash => states.wallDash.active;
 		public bool isWallSlide => states.wallSlide.active;
 		public int direction => states.motor.direction;
 
@@ -49,13 +51,14 @@
 
 			CharacterStateBase.UpdateState(states.gravity);
 			CharacterStateBase.UpdateState(states.input);
+			CharacterStateBase.UpdateState(states.wallSlide);
 
 			CharacterStateBase.UpdateState(states.jump);
 			CharacterStateBase.UpdateState(states.knockback);
 			CharacterStateBase.UpdateState(states.slide);
+			CharacterStateBase.UpdateState(states.wallDash);
 			CharacterStateBase.UpdateState(states.wallJump);
 
-			CharacterStateBase.UpdateState(states.wallSlide);
 			CharacterStateBase.UpdateState(states.motor);
 
 			CharacterStateBase.UpdateState(states.movement);

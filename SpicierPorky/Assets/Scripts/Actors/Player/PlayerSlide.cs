@@ -4,10 +4,10 @@
 
 	public class PlayerSlide : CharacterState<PlayerController>
 	{
-		[SerializeField] private Speed speed = new Speed(5, 5, 25);
+		[SerializeField] private Speed speed = new Speed(5, 5, 15);
 
-		[SerializeField] private float duration = 0.6f;
-		[SerializeField] private float landExtension = 0.2f;
+		[SerializeField] private float duration = 1;
+		[SerializeField] private float landExtension = 0.25f;
 
 		private float activeTime;
 

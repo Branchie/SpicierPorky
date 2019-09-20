@@ -22,6 +22,8 @@
 			{
 				if (parent.logic.allowSlide)
 					parent.states.slide.Activate();
+				else if (parent.logic.allowWallDash)
+					parent.states.wallDash.Activate();
 			}
 
 			if (input.jump.onPressed)

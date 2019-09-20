@@ -4,7 +4,7 @@
 
 	public class PlayerWallJump : CharacterState<PlayerController>
 	{
-		[SerializeField] private float height = 3;
+		[SerializeField] private float height = 5;
 
 		public override void SetReferenceToCharacter(PlayerController parent)
 		{

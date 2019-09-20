@@ -10,6 +10,7 @@
 		public PlayerMotor motor;
 		public PlayerMovement movement;
 		public PlayerSlide slide;
+		public PlayerWallDash wallDash;
 		public PlayerWallJump wallJump;
 		public PlayerWallSlide wallSlide;
 	}

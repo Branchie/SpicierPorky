@@ -2,37 +2,33 @@
 {
 	using UnityEngine;
 
-	public class PlayerKnockback : CharacterState<PlayerController>
+	public class PlayerWallDash : CharacterState<PlayerController>
 	{
-		[SerializeField] private float force = 10;
 		[SerializeField] private float duration = 1;
+		[SerializeField] private float speed = 5;
 
 		private float activeTime;
 
 		public override void SetReferenceToCharacter(PlayerController parent)
 		{
 			base.SetReferenceToCharacter(parent);
-			parent.states.knockback = this;
-		}
-
-		public override void Init()
-		{
-			parent.states.slide.onEnterEvent += Deactivate;
-			parent.states.jump.onJump += Deactivate;
+			parent.states.wallDash = this;
 		}
 
 		protected override void OnEnter()
 		{
-			parent.states.movement.velocity.x = parent.states.motor.direction * -force;
 			activeTime = 0;
+
+			parent.states.movement.velocity.y = -speed;
+			parent.states.slide.Activate();
 		}
 
 		protected override void UpdateState()
 		{
-			parent.states.motor.speed.maxSpeed = 0;
-
-			if ((activeTime += Time.deltaTime) >= duration)
+			if (!parent.logic.isWallSlide || ((activeTime += Time.deltaTime) > duration))
 				Deactivate();
+			else
+				parent.states.movement.maxFallSpeed = speed;
 		}
 
 		protected override void ResetState()

@@ -4,7 +4,7 @@
 
 	public class PlayerMovement : CharacterState<PlayerController>
 	{
-		public float maxFallSpeed = 30;
+		public float maxFallSpeed = 60;
 
 		[HideInInspector] public CC2D character;
 

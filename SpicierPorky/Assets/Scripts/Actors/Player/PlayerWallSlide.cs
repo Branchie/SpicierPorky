@@ -4,7 +4,7 @@
 
 	public class PlayerWallSlide : CharacterState<PlayerController>
 	{
-		[SerializeField] private float maxFallSpeed = 7.25f;
+		[SerializeField] private float maxFallSpeed = 10f;
 
 		public override void SetReferenceToCharacter(PlayerController parent)
 		{
