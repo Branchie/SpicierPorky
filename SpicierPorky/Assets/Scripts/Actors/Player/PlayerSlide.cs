@@ -36,16 +36,7 @@
 		{
 			activeTime = 0;
 
-			parent.states.graphic.transform.localScale = new Vector3(1, 0.25f, 1);
-			parent.states.graphic.transform.localPosition = new Vector3(0, 0.125f, 0);
-
 			parent.states.movement.velocity.x = parent.states.motor.direction * speed.maxSpeed;
-		}
-
-		protected override void OnExit()
-		{
-			parent.states.graphic.transform.localScale = Vector3.one;
-			parent.states.graphic.transform.localPosition = new Vector3(0, 0.5f, 0);
 		}
 
 		protected override void UpdateState()
