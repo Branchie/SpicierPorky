@@ -79,5 +79,8 @@
 
 			flip = direction;
 		}
+
+		protected override void SuspendState()		=> anim.speed = 0;
+		protected override void UnsuspendState()	=> anim.speed = 1;
 	}
 }

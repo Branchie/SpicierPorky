@@ -1,51 +1,56 @@
 ﻿namespace Gypo.SpicierPorky.Actors.Camera
 {
+	using Interfaces;
 	using UnityEngine;
 
-	public class CameraController : CharacterBase
+	public class CameraController : CharacterBase, ICamera
 	{
 		public event System.Action<Transform> onTargetChanged = delegate { };
 
-		[HideInInspector] public Camera cam;
 		[HideInInspector] public CameraLogic logic;
 		[HideInInspector] public CameraStates states = new CameraStates();
-		[HideInInspector] public CharacterBase targetCharacter;
+		[HideInInspector] public ICameraTarget cameraTarget;
+		[HideInInspector] public Transform target;
 
 		[SerializeField] protected string targetStartTag = "Player";
 
 		private Vector2 startPosition;
 
-		public Transform target
-		{
-			get => _target;
-			set
-			{
-				if (_target == value)
-					return;
+		public int targetDirection		=> logic.hasCameraTarget ? cameraTarget.direction : 1;
+		public Vector2 targetPosition	=> target ? (Vector2)target.position : Vector2.zero;
 
-				_target = value;
-
-				if (_target)
-					targetCharacter = _target.GetComponent<CharacterBase>();
-
-				onTargetChanged(_target);
-			}
-		}
-		private Transform _target;
-
-		public Vector2 targetPosition
-		{
-			get => target ? (Vector2)target.position : Vector2.zero;
-		}
+		public Camera cam { get; private set; }
 
 		protected override void Awake()
 		{
 			cam = GetComponentInChildren<Camera>();
-			target = GameObject.FindGameObjectWithTag(targetStartTag)?.transform;
+			SetTarget(GameObject.FindGameObjectWithTag(targetStartTag));
 
 			base.Awake();
 
 			startPosition = position;
+		}
+
+		public void SetTarget(GameObject target)
+		{
+			if (!Equals(cameraTarget, null))
+				cameraTarget.OnLostCameraFocus(this);
+
+			if (target)
+			{
+				this.target = target.transform;
+				cameraTarget = target.GetComponent<ICameraTarget>();
+
+				if (!Equals(cameraTarget, null))
+					cameraTarget.OnGainedCameraFocus(this);
+			}
+			else
+			{
+				this.target = null;
+				cameraTarget = null;
+			}
+
+			onTargetChanged(this.target);
 		}
 
 		public override void OnReset()
