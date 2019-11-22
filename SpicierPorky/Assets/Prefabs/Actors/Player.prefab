@@ -373,6 +373,7 @@ MonoBehaviour:
     deceleration: 54
     maxSpeed: 15
   direction: 1
+  forceRight: 1
 --- !u!114 &1234030156235166910
 MonoBehaviour:
   m_ObjectHideFlags: 0

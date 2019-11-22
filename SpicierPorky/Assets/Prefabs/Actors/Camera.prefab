@@ -76,12 +76,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb7910590c3af6498e16df550241ff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xMax: 0
-  xMin: 0
-  yMax: 0
-  yMin: 0
-  halfSize: {x: 0, y: 0}
-  size: {x: 0, y: 0}
 --- !u!114 &6679485504330186545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,7 +88,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58dc9a671f7c70f44b5a684542c27c33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalizedX: 0.25
   smoothTime: 0.125
+  yOffset: 2
 --- !u!114 &6679485504330186544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,7 +149,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.05490196, g: 0.07450981, b: 0.09803922, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -241,9 +237,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11da93ad42c0f1148a7eefc2b2f784d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
   logic: {fileID: 0}
-  targetCharacter: {fileID: 0}
+  target: {fileID: 0}
   targetStartTag: Player
 --- !u!114 &6679485504671406526
 MonoBehaviour:

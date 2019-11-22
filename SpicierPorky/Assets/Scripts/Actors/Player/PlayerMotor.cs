@@ -8,6 +8,8 @@
 
 		[HideInInspector] public int direction = 1;
 
+		[SerializeField] private bool forceRight = true;
+
 		private Speed _speed;
 
 		private int _direction;
@@ -29,6 +31,9 @@
 			float acc = speed.acceleration;
 			float tar = direction * speed.maxSpeed;
 
+			if (forceRight && parent.logic.isGrounded)
+				direction = 1;
+
 			if ((direction > 0 && vel.x > tar) || (direction < 0 && vel.x < tar))
 				vel.x = tar;
 			else
@@ -47,5 +52,7 @@
 		{
 			direction = _direction;
 		}
+
+		public void SetForceRight(bool value) => forceRight = value;
 	}
 }
