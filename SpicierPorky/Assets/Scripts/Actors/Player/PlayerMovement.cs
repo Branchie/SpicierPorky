@@ -32,6 +32,7 @@
 			if (parent.logic.allowKnockback)
 				parent.states.knockback.Activate();
 
+			character.ResetColliderSize();
 			maxFallSpeed = _maxFallSpeed;
 		}
 

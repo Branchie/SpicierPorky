@@ -8,6 +8,7 @@
 
 		[SerializeField] private float duration = 1;
 		[SerializeField] private float landExtension = 0.25f;
+		[SerializeField] private float tunnelExtension = 0.25f;
 
 		private float activeTime;
 
@@ -49,8 +50,12 @@
 				activeTime = duration - landExtension;
 				return;
 			}
+			else
+				parent.states.movement.character.SetRelativeColliderSize(1, 0.5f);
 
-			if (activeTime >= duration)
+			if (parent.logic.hasCeiling)
+				activeTime = Mathf.Min(activeTime, duration - tunnelExtension);
+			else if (activeTime >= duration)
 				Deactivate();
 		}
 

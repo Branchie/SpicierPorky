@@ -10,7 +10,7 @@
 		public bool allowGraphic		=> true;
 		public bool allowGravity		=> true;
 		public bool allowInput			=> true;
-		public bool allowJump			=> isGrounded;
+		public bool allowJump			=> isGrounded && !hasCeiling;
 		public bool allowKnockback		=> isGrounded && hasWallCollision;
 		public bool allowMotor			=> true;
 		public bool allowMovement		=> true;
@@ -19,6 +19,7 @@
 		public bool allowWallJump		=> hasWall;
 		public bool allowWallSlide		=> hasWall;
 
+		public bool hasCeiling			=> states.movement.character.CheckVertical(0.25f);
 		public bool hasWall				=> collisionState.left || collisionState.right;
 		public bool hasWallCollision	=> (direction > 0 && collisionState.right) || (direction < 0 && collisionState.left);
 		public bool isGrounded			=> states.movement.character.collisionState.down;
