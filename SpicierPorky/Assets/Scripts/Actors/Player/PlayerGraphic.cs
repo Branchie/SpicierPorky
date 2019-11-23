@@ -31,7 +31,9 @@
 
 			if (parent.logic.isGrounded)
 			{
-				if (parent.logic.isSliding)
+				if (parent.logic.isIdle)
+					animState = "Idle";
+				else if (parent.logic.isSliding)
 					animState = "Slide";
 				else if (parent.logic.isKnockback)
 					animState = "Knockback";

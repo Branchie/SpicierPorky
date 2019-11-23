@@ -4,6 +4,7 @@
 	{
 		public PlayerGraphic graphic;
 		public PlayerGravity gravity;
+		public PlayerIdle idle;
 		public PlayerInput input;
 		public PlayerJump jump;
 		public PlayerKnockback knockback;
