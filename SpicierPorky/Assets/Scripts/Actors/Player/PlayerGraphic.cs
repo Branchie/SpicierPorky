@@ -5,6 +5,7 @@
 	public class PlayerGraphic : CharacterState<PlayerController>
 	{
 		private static readonly int HASH_AIR		= Animator.StringToHash("Air");
+		private static readonly int HASH_DEAD		= Animator.StringToHash("Dead");
 		private static readonly int HASH_IDLE		= Animator.StringToHash("Idle");
 		private static readonly int HASH_KNOCKBACK	= Animator.StringToHash("Knockback");
 		private static readonly int HASH_ROLL		= Animator.StringToHash("Roll");
@@ -38,7 +39,9 @@
 			int flip = parent.logic.direction;
 			int animStateHash;
 
-			if (parent.logic.isGrounded)
+			if (parent.logic.isDead)
+				animStateHash = HASH_DEAD;
+			else if (parent.logic.isGrounded)
 			{
 				if (parent.logic.isIdle)
 					animStateHash = HASH_IDLE;

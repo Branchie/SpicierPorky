@@ -7,12 +7,13 @@
 		private PlayerController parent;
 		private PlayerStates states;
 
+		public bool allowDead			=> true;
 		public bool allowGraphic		=> true;
 		public bool allowGravity		=> true;
-		public bool allowInput			=> true;
+		public bool allowInput			=> !isDead;
 		public bool allowJump			=> isGrounded && !hasCeiling;
 		public bool allowKnockback		=> isGrounded && hasWallCollision;
-		public bool allowMotor			=> !isIdle;
+		public bool allowMotor			=> !isIdle && !isDead;
 		public bool allowMovement		=> true;
 		public bool allowSlide			=> isGrounded && (!isSliding || states.slide.canQueue);
 		public bool allowWallDash		=> isWallSlide && !isWallDash;
@@ -22,6 +23,7 @@
 		public bool hasCeiling			=> states.movement.character.CheckVertical(0.25f);
 		public bool hasWall				=> collisionState.left || collisionState.right;
 		public bool hasWallCollision	=> (direction > 0 && collisionState.right) || (direction < 0 && collisionState.left);
+		public bool isDead				=> states.dead.active;
 		public bool isIdle				=> states.idle.active;
 		public bool isGrounded			=> states.movement.character.collisionState.down;
 		public bool isKnockback			=> states.knockback.active;

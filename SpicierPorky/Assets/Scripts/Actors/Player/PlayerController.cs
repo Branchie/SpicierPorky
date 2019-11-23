@@ -10,6 +10,7 @@
 
 		private Vector2 startPosition;
 
+		public bool canFollow		=> !logic.isDead;
 		public int direction		=> logic.direction;
 		public int playerId			=> 0;
 		public Vector2 velocity		=> states.movement.velocity;

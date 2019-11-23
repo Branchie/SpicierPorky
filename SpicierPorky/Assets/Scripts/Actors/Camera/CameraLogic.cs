@@ -8,10 +8,11 @@
 		private CameraStates states;
 
 		public bool allowBounds			=> true;
-		public bool allowFollow			=> hasTarget;
+		public bool allowFollow			=> hasTarget && canFollowTarget;
 		public bool allowMovement		=> true;
 		public bool allowZoom			=> true;
 
+		public bool canFollowTarget		=> !hasCameraTarget || hasCameraTarget && parent.cameraTarget.canFollow;
 		public bool hasCameraTarget		=> !Equals(parent.cameraTarget, null);
 		public bool hasTarget			=> parent.target;
 

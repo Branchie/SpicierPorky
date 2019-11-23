@@ -2,6 +2,7 @@
 {
 	public class PlayerStates
 	{
+		public PlayerDead dead;
 		public PlayerGraphic graphic;
 		public PlayerGravity gravity;
 		public PlayerIdle idle;
