@@ -4,8 +4,6 @@
 
 	public class PlayerInput : CharacterState<PlayerController>
 	{
-		[HideInInspector] public Vector2 movement;
-
 		private Inputs.Player input => Inputs.players[parent.playerId];
 
 		public override void SetReferenceToCharacter(PlayerController parent)
@@ -16,8 +14,6 @@
 
 		protected override void UpdateState()
 		{
-			movement = input.movement;
-
 			if (input.slide.onPressed)
 			{
 				if (parent.logic.allowSlide)

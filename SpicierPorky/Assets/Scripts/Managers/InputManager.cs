@@ -7,13 +7,29 @@
 	{
 		[SerializeField] private ControlScheme player = default;
 
-		protected virtual void Update()
+		private ControlScheme[] players;
+
+		protected virtual void Awake()
 		{
-			Inputs.player.movement = player.GetAxis2D("Horizontal", "Vertical");
+			players = new ControlScheme[Inputs.players.Length];
+
+			for (int i = 0; i < players.Length; i++)
+			{
+				players[i] = Instantiate(player);
+				players[i].SetControllerID(i);
+			}
 		}
 
-		protected virtual void FixedUpdate()
+		protected virtual void Update()
 		{
+			for (int i = 0; i < Inputs.players.Length; i++)
+				Player(i);
+		}
+
+		protected virtual void Player(int index)
+		{
+			ControlScheme player = players[index];
+
 			Inputs.player.jump.Update(player.GetButton("Jump"));
 			Inputs.player.slide.Update(player.GetButton("Slide"));
 		}

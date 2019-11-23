@@ -13,27 +13,13 @@ MonoBehaviour:
   m_Name: Default
   m_EditorClassIdentifier: 
   displayName: Default
-  axis:
-  - name: Horizontal
-    standalone:
-      keys:
-      - negative: 97
-        positive: 100
-      - negative: 276
-        positive: 275
-      raw: []
-  - name: Vertical
-    standalone:
-      keys:
-      - negative: 115
-        positive: 119
-      - negative: 274
-        positive: 273
-      raw: []
+  axis: []
   buttons:
   - name: Jump
     standalone:
+      buttons: 00000000
       keys: 6c0000007a000000
   - name: Slide
     standalone:
+      buttons: 0c00000010000000
       keys: 7300000012010000
