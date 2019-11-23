@@ -4,13 +4,22 @@
 
 	public class PlayerGraphic : CharacterState<PlayerController>
 	{
+		private static readonly int HASH_AIR		= Animator.StringToHash("Air");
+		private static readonly int HASH_IDLE		= Animator.StringToHash("Idle");
+		private static readonly int HASH_KNOCKBACK	= Animator.StringToHash("Knockback");
+		private static readonly int HASH_ROLL		= Animator.StringToHash("Roll");
+		private static readonly int HASH_RUN		= Animator.StringToHash("Run");
+		private static readonly int HASH_SLIDE		= Animator.StringToHash("Slide");
+		private static readonly int HASH_WALL_DASH	= Animator.StringToHash("WallDash");
+		private static readonly int HASH_WALL_SLIDE	= Animator.StringToHash("WallSlide");
+
 		[HideInInspector] public Animator anim = default;
 		[HideInInspector] public SpriteRenderer sprRen = default;
 
 		[SerializeField] private RuntimeAnimatorController character = default;
 
 		private int flip;
-		private string animState;
+		private int animStateHash;
 
 		public override void SetReferenceToCharacter(PlayerController parent)
 		{
@@ -27,50 +36,50 @@
 		protected override void UpdateState()
 		{
 			int flip = parent.logic.direction;
-			string animState;
+			int animStateHash;
 
 			if (parent.logic.isGrounded)
 			{
 				if (parent.logic.isIdle)
-					animState = "Idle";
+					animStateHash = HASH_IDLE;
 				else if (parent.logic.isSliding)
-					animState = "Slide";
+					animStateHash = HASH_SLIDE;
 				else if (parent.logic.isKnockback)
-					animState = "Knockback";
+					animStateHash = HASH_KNOCKBACK;
 				else
-					animState = "Run";
+					animStateHash = HASH_RUN;
 			}
 			else
 			{
 				if (parent.logic.isWallDash)
 				{
-					animState = "WallDash";
+					animStateHash = HASH_WALL_DASH;
 					flip = -parent.logic.direction;
 				}
 				else if (parent.logic.isWallSlide)
 				{
-					animState = "WallSlide";
+					animStateHash = HASH_WALL_SLIDE;
 					flip = -parent.logic.direction;
 				}
 				else if (parent.logic.isSliding)
-					animState = "Roll";
+					animStateHash = HASH_ROLL;
 				else
-					animState = "Air";
+					animStateHash = HASH_AIR;
 			}
 
-			if (!string.Equals(this.animState, animState))
-				Play(animState, -1, 0);
+			if (this.animStateHash != animStateHash)
+				Play(animStateHash, -1, 0);
 
 			if (this.flip != flip)
 				SetFlip(flip);
 		}
 
-		private void Play(string stateName, int layer, float normalizedTime)
+		private void Play(int stateHash, int layer, float normalizedTime)
 		{
-			anim.Play(stateName, layer, normalizedTime);
+			anim.Play(stateHash, layer, normalizedTime);
 			anim.Update(float.Epsilon);
 
-			animState = stateName;
+			animStateHash = stateHash;
 		}
 
 		private void SetFlip(int direction)
