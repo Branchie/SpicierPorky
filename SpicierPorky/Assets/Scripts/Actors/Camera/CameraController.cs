@@ -29,6 +29,15 @@
 			base.Awake();
 
 			startPosition = position;
+
+			Game.cameras.Add(this);
+		}
+
+		protected override void OnDestroy()
+		{
+			Game.cameras.Remove(this);
+
+			base.OnDestroy();
 		}
 
 		public void SetTarget(GameObject target)

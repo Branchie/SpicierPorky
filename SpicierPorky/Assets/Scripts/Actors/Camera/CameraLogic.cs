@@ -10,6 +10,7 @@
 		public bool allowBounds			=> true;
 		public bool allowFollow			=> hasTarget && canFollowTarget;
 		public bool allowMovement		=> true;
+		public bool allowViewport		=> true;
 		public bool allowZoom			=> true;
 
 		public bool canFollowTarget		=> !hasCameraTarget || hasCameraTarget && parent.cameraTarget.canFollow;
@@ -32,11 +33,13 @@
 			CharacterStateBase.SetActive(states.bounds, allowBounds);
 			CharacterStateBase.SetActive(states.follow, allowFollow);
 			CharacterStateBase.SetActive(states.movement, allowMovement);
+			CharacterStateBase.SetActive(states.viewport, allowViewport);
 			CharacterStateBase.SetActive(states.zoom, allowZoom);
 
 			CharacterStateBase.UpdateState(states.bounds);
 
 			CharacterStateBase.UpdateState(states.follow);
+			CharacterStateBase.UpdateState(states.viewport);
 			CharacterStateBase.UpdateState(states.zoom);
 
 			CharacterStateBase.UpdateState(states.movement);

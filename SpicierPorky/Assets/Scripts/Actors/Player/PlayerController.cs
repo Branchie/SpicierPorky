@@ -20,6 +20,15 @@
 			base.Awake();
 
 			startPosition = position;
+
+			Game.players.Add(this);
+		}
+
+		protected override void OnDestroy()
+		{
+			Game.players.Remove(this);
+
+			base.OnDestroy();
 		}
 
 		public override void OnReset()
