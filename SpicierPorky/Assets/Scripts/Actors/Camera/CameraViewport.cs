@@ -4,6 +4,8 @@
 
 	public class CameraViewport : CharacterState<CameraController>
 	{
+		public event System.Action onChanged = delegate { };
+
 		private static readonly Rect[][] viewports = new Rect[][]
 		{
 			new Rect[] { full },
@@ -47,7 +49,14 @@
 
 		public void SetIndex(int index, int cameraCount)
 		{
+			if (cameraCount <= 0 || cameraCount >= viewports.Length)
+				return;
+
+			if (index < 0 || index >= viewports[cameraCount].Length)
+				return;
+
 			parent.cam.rect = viewports[cameraCount - 1][index];
+			onChanged();
 		}
 	}
 }

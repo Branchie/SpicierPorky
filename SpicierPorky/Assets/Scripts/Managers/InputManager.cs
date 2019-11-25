@@ -1,4 +1,4 @@
-﻿namespace Gypo.SpicierPorky
+﻿namespace Gypo.SpicierPorky.Managers
 {
 	using Gypo.Input;
 	using UnityEngine;
@@ -16,7 +16,7 @@
 			for (int i = 0; i < players.Length; i++)
 			{
 				players[i] = Instantiate(player);
-				players[i].SetControllerID(i);
+				players[i].SetControllerID(i == 0 ? -1 : i);
 			}
 		}
 
@@ -28,10 +28,13 @@
 
 		protected virtual void Player(int index)
 		{
-			ControlScheme player = players[index];
+			ControlScheme input = players[index];
+			Inputs.Player player = Inputs.players[index];
 
-			Inputs.player.jump.Update(player.GetButton("Jump"));
-			Inputs.player.slide.Update(player.GetButton("Slide"));
+			player.flip.Update(input.GetButton("Flip"));
+			player.join.Update(input.GetButton("Join"));
+			player.jump.Update(input.GetButton("Jump"));
+			player.slide.Update(input.GetButton("Slide"));
 		}
 	}
 }

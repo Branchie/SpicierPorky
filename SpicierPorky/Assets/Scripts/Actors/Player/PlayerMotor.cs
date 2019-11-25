@@ -54,5 +54,6 @@
 		}
 
 		public void SetForceRight(bool value) => forceRight = value;
+		public void ToggleForceRight() => forceRight = !forceRight;
 	}
 }

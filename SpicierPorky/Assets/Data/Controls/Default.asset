@@ -15,6 +15,14 @@ MonoBehaviour:
   displayName: Default
   axis: []
   buttons:
+  - name: Flip
+    standalone:
+      buttons: 01000000
+      keys: 71000000
+  - name: Join
+    standalone:
+      buttons: 0b000000
+      keys: 0d000000
   - name: Jump
     standalone:
       buttons: 00000000

@@ -4,7 +4,7 @@
 
 	public class PlayerInput : CharacterState<PlayerController>
 	{
-		private Inputs.Player input => Inputs.players[parent.playerId];
+		private Inputs.Player input => Inputs.players[parent.playerID];
 
 		public override void SetReferenceToCharacter(PlayerController parent)
 		{
@@ -29,6 +29,9 @@
 				else if (parent.logic.allowWallJump)
 					parent.states.wallJump.Activate();
 			}
+
+			if (input.flip.onPressed)
+				parent.states.motor.ToggleForceRight();
 		}
 	}
 }

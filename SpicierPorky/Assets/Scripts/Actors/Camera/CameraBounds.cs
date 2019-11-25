@@ -22,6 +22,11 @@
 			UpdateBounds();
 		}
 
+		public override void Init()
+		{
+			parent.states.viewport.onChanged += UpdateBounds;
+		}
+
 		protected override void UpdateState()
 		{
 			Vector2 position = transform.position;

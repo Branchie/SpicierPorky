@@ -8,11 +8,12 @@
 		[HideInInspector] public PlayerLogic logic;
 		[HideInInspector] public PlayerStates states = new PlayerStates();
 
+		[HideInInspector] public int playerID = 0;
+
 		private Vector2 startPosition;
 
 		public bool canFollow		=> !logic.isDead;
 		public int direction		=> logic.direction;
-		public int playerId			=> 0;
 		public Vector2 velocity		=> states.movement.velocity;
 
 		protected override void Awake()
@@ -36,6 +37,11 @@
 			position = startPosition;
 
 			base.OnReset();
+		}
+
+		public void SetPlayerID(int index)
+		{
+			playerID = index;
 		}
 
 		public void OnGainedCameraFocus(ICamera cam) { }
